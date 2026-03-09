@@ -1,15 +1,27 @@
 import { render, screen } from '@testing-library/react'
-import App from '../App';
+import { userEvent } from '@testing-library/user-event'
+import { MemoryRouter } from 'react-router-dom'
+import App from '../App'
 
-describe('App component', () => {
-  it('renders the correct heading', () => {
-    render(<App />)
-    expect(screen.getByRole('heading').textContent).toMatch(/storefront ready/i)
-  })
+describe('App Routing', () => {
+  it('navigates to shop and cart pages correctly', async () => {
+    const user = userEvent.setup()
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    )
 
-  it('renders the shopping cart icon', () => {
-    render(<App />)
-    const icon = screen.getByTestId('shopping-cart-icon')
-    expect(icon).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /welcome/i }))
+      .toBeInTheDocument()
+
+    const shopLink = screen.getByRole('link', { name: /shop/i })
+    await user.click(shopLink)
+    expect(screen.getByRole('heading', { name: /shop/i })).toBeInTheDocument()
+
+    const cartLink = screen.getByRole('link', { name: /cart/i })
+    await user.click(cartLink)
+    expect(screen.getByRole('heading', { name: /your shopping cart/i }))
+      .toBeInTheDocument()
   })
 })
