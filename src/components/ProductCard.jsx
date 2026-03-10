@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Plus, Minus, ShoppingCart } from 'lucide-react'
 import Button from './Button'
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, addToCart }) => {
   const [quantity, setQuantity] = useState(1)
 
   const handleIncrement = () => setQuantity((prev) => prev + 1)
@@ -61,7 +61,7 @@ const ProductCard = ({ product }) => {
 
           <Button
             className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 flex gap-2 shadow-sm"
-            onClick={() => console.log(`Added ${quantity} of ${product.title}`)}
+            onClick={() => addToCart(product, quantity)}
           >
             <ShoppingCart size={18} />
             Add to Cart

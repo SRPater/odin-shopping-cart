@@ -8,8 +8,10 @@ vi.mock('../components/ProductCard', () => ({
 }))
 
 describe('Shop Page', () => {
+  const mockAddToCart = vi.fn()
+
   it('renders loading state initially', () => {
-    render(<Shop />)
+    render(<Shop addToCart={mockAddToCart} />)
     expect(screen.getByText(/loading products.../i)).toBeInTheDocument()
   })
 
@@ -26,7 +28,7 @@ describe('Shop Page', () => {
       })
     )
 
-    render(<Shop />)
+    render(<Shop addToCart={mockAddToCart} />)
 
     await waitFor(() => {
       expect(screen.getAllByTestId('product-card')).toHaveLength(2)
@@ -43,7 +45,7 @@ describe('Shop Page', () => {
       })
     )
 
-    render(<Shop />)
+    render(<Shop addToCart={mockAddToCart} />)
 
     await waitFor(() => {
       expect(screen.getByText(/error:/i)).toBeInTheDocument()

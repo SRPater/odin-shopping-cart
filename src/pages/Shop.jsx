@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import ProductCard from '../components/ProductCard'
 
-const Shop = () => {
+const Shop = ({ addToCart }) => {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -50,7 +50,11 @@ const Shop = () => {
       </h1>
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard
+            key={product.id}
+            product={product}
+            addToCart={addToCart}
+          />
         ))}
       </div>
     </div>

@@ -10,8 +10,10 @@ describe('ProductCard Component', () => {
     image: 'test.jpg',
   }
 
+  const mockAddToCart = vi.fn()
+
   it('renders product details correctly', () => {
-    render(<ProductCard product={mockProduct} />)
+    render(<ProductCard product={mockProduct} addToCart={mockAddToCart} />)
 
     expect(screen.getByText('Test Product')).toBeInTheDocument()
     expect(screen.getByText('$10.00')).toBeInTheDocument()
@@ -19,7 +21,7 @@ describe('ProductCard Component', () => {
 
   it('increments and decrements quantity', async() => {
     const user = userEvent.setup()
-    render(<ProductCard product={mockProduct} />)
+    render(<ProductCard product={mockProduct} addToCart={mockAddToCart} />)
 
     const input = screen.getByRole('spinbutton')
     const plusBtn = screen.getByRole('button', { name: /increase quantity/i })
@@ -34,9 +36,23 @@ describe('ProductCard Component', () => {
     expect(input.value).toBe('1')
   })
 
+  it('calls addToCart with correct data when clicked', async() => {
+    const user = userEvent.setup()
+    render(<ProductCard product={mockProduct} addToCart={mockAddToCart} />)
+
+    const plusBtn = screen.getByRole('button', { name: /increase quantity/i })
+    const addBtn = screen.getByRole('button', { name: /add to cart/i })
+
+    await user.click(plusBtn)
+    await user.click(addBtn)
+
+    expect(mockAddToCart).toHaveBeenCalledTimes(1)
+    expect(mockAddToCart).toHaveBeenCalledWith(mockProduct, 2)
+  })
+
   it('allows manual input of quantity', async() => {
     const user = userEvent.setup()
-    render(<ProductCard product={mockProduct} />)
+    render(<ProductCard product={mockProduct} addToCart={mockAddToCart} />)
 
     const input = screen.getByRole('spinbutton')
 
@@ -48,7 +64,7 @@ describe('ProductCard Component', () => {
 
   it('does not allow quantity to go below 1', async() => {
     const user = userEvent.setup()
-    render(<ProductCard product={mockProduct} />)
+    render(<ProductCard product={mockProduct} addToCart={mockAddToCart} />)
 
     const minusBtn = screen.getByRole('button', { name: /decrease quantity/i })
     const input = screen.getByRole('spinbutton')
