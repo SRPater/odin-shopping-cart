@@ -3,6 +3,14 @@ import { userEvent } from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import App from '../App'
 
+vi.mock('../pages/Shop', () => ({
+  default: () => <div><h1>Shop Our Collection</h1></div>,
+}))
+
+vi.mock('../pages/Cart', () => ({
+  default: () => <div><h1>Your Shopping Cart</h1></div>,
+}))
+
 describe('App Routing', () => {
   it('navigates to shop and cart pages correctly', async () => {
     const user = userEvent.setup()
@@ -14,7 +22,7 @@ describe('App Routing', () => {
 
     expect(screen.getByRole('heading', { name: /welcome/i }))
       .toBeInTheDocument()
-
+    
     const shopLink = screen.getByRole('link', { name: /shop/i })
     await user.click(shopLink)
     expect(screen.getByRole('heading', { name: /shop/i })).toBeInTheDocument()
