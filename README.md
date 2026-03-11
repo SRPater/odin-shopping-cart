@@ -1,16 +1,24 @@
-# React + Vite
+# Odin Shopping Cart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive e-commerce storefront built with **React** and **Tailwind CSS**. This project features a dynamic product catalog integrated with the FakeStoreAPI, a fully functional shopping cart, and a unified design system.
 
-Currently, two official plugins are available:
+## 🚀 Features
+* **Product Catalog**: Real-time data fetching from FakeStoreAPI.
+* **Shopping Cart**: Add, remove, and adjust item quantities with automatic total calculations.
+* **Responsive Design**: Mobile-first layout using Tailwind CSS utility classes.
+* **Client-Side Routing**: Seamless navigation between Home, Shop, and Cart pages via React Router.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tech Stack
+* **Framework**: [React](https://reactjs.org/)
+* **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+* **Icons**: [Lucide React](https://lucide.dev/)
+* **API**: [FakeStoreAPI](https://fakestoreapi.com)
+* **Tooling**: Vite
 
-## React Compiler
+## 🍴 Getting Started
+To experiment with this project or build upon it:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **Fork** this repository to your own GitHub account.
+2. **Clone** your fork: `git clone https://github.com/YOUR_USERNAME/odin-shopping-cart.git`
+3. **Install** dependencies: `npm install`
+4. **Start** the server: `npm run dev`
