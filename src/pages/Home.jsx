@@ -1,8 +1,10 @@
 const Home = () => {
   return (
-    <div className="p-8">
-      <h1 className="text-4xl font-bold">Welcome to the Store</h1>
-      <p className="mt-4 text-gray-600">
+    <div className="mx-auto max-w-7xl p-8">
+      <h1 className="mb-8 text-4xl font-extrabold text-gray-900">
+        Welcome to the Store
+      </h1>
+      <p className="text-xl text-gray-600">
         Find the best gear for your next adventure.
       </p>
     </div>

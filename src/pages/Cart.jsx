@@ -8,8 +8,10 @@ const Cart = ({ cart, removeFromCart, updateQuantity }) => {
   )
 
   return (
-    <div className="mx-auto max-w-4xl p-8">
-      <h1 className="text-4xl font-bold">Your Shopping Cart</h1>
+    <div className="mx-auto max-w-7xl p-8">
+      <h1 className="mb-8 text-4xl font-extrabold text-gray-900">
+        Your Shopping Cart
+      </h1>
 
       {cart.length === 0 ? (
         <div className="mt-8">
